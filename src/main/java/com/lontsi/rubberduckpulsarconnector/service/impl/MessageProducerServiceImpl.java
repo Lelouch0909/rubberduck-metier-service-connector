@@ -5,6 +5,7 @@ import com.lontsi.rubberduckpulsarconnector.dto.MessageProducerDto;
 import com.lontsi.rubberduckpulsarconnector.service.IMessageProducerService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.pulsar.reactive.core.ReactivePulsarTemplate;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
@@ -17,7 +18,10 @@ import java.time.Duration;
 @RequiredArgsConstructor
 @Slf4j
 public class MessageProducerServiceImpl implements IMessageProducerService {
-    private static final String TOPIC = "discussions-responses";
+
+    @Value("${pulsar.topic-responses}")
+    private  String TOPIC;
+
     private static final int MAX_RETRIES = 3;
     private static final Duration INITIAL_BACKOFF = Duration.ofMillis(500);
     private static final Duration TIMEOUT = Duration.ofSeconds(5);
