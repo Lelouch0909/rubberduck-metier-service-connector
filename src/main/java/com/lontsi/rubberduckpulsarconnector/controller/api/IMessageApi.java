@@ -1,7 +1,6 @@
 package com.lontsi.rubberduckpulsarconnector.controller.api;
 
 import com.lontsi.rubberduckpulsarconnector.dto.MessageConsumerDto;
-
 import org.apache.pulsar.client.api.Message;
 import org.apache.pulsar.client.api.SubscriptionType;
 import org.apache.pulsar.common.schema.SchemaType;
