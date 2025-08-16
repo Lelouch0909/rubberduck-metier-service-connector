@@ -22,22 +22,13 @@ public class OrchestrationAgentConfig {
     private WebSearchTool webSearchTool;
     @Autowired
     private SyntheseChatTool syntheseChatTool;
-    List<Object> standardTools = List.of(syntheseChatTool);
-    List<Object> professionalTools = List.of(
-            syntheseChatTool,
-            webSearchTool
-    );
-    List<Object> premiumTools = List.of(
-            syntheseChatTool,
-            webSearchTool
-    );
 
     @Bean
     @Qualifier("standardOrchestration")
     public OrchestrationAgent standardOrchestration() {
         return AiServices.builder(OrchestrationAgent.class)
                 .chatModel(orchestrationModel)
-                .tools(standardTools)
+                .tools(syntheseChatTool)
                 .build();
     }
 
@@ -46,7 +37,7 @@ public class OrchestrationAgentConfig {
     public OrchestrationAgent professionalOrchestration() {
         return AiServices.builder(OrchestrationAgent.class)
                 .chatModel(orchestrationModel)
-                .tools(professionalTools)
+                .tools(webSearchTool,syntheseChatTool)
                 .build();
     }
 
@@ -55,7 +46,7 @@ public class OrchestrationAgentConfig {
     public OrchestrationAgent premiumOrchestration() {
         return AiServices.builder(OrchestrationAgent.class)
                 .chatModel(orchestrationModel)
-                .tools(premiumTools)
+                .tools(webSearchTool,syntheseChatTool)
                 .build();
 
     }

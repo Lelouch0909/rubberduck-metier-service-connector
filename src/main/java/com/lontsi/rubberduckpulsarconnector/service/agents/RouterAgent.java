@@ -2,8 +2,12 @@ package com.lontsi.rubberduckpulsarconnector.service.agents;
 
 import com.lontsi.rubberduckpulsarconnector.dto.MessageDto;
 import dev.langchain4j.service.SystemMessage;
+import dev.langchain4j.service.spring.AiService;
+import dev.langchain4j.service.spring.AiServiceWiringMode;
 
+@AiService(wiringMode = AiServiceWiringMode.EXPLICIT, chatModel = "routerModel", tools = {"saveTool", "orchestrationTool"})
 public interface RouterAgent {
+
     @SystemMessage("""
             You are an expert routing agent for a conversational assistant system.
             INPUT FORMAT:

@@ -50,6 +50,9 @@ public class OrchestrationTool {
             OrchestrationAgent selectedAgent = getAgentForTier(message.tier());
             String response = selectedAgent.processChat(new OrchestrationRequestDto(message.content(), message.mode()));
             log.info("=== ORCHESTRATION SUCCESS ===");
+            log.warn(response);
+            log.info("=== ORCHESTRATION SUCCESS ===");
+
             return response;
         } catch (Exception e) {
             log.error("=== ORCHESTRATION ERROR ===", e);

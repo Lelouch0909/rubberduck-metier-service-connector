@@ -18,8 +18,9 @@ public class ModelsProvider {
     @Qualifier("OrchestrationModel")
     ChatModel orchestrationModel() {
         return GitHubModelsChatModel.builder()
-                .gitHubToken(System.getenv("GITHUB_TOKEN"))
-                .modelName("gpt-4o-mini")
+                .gitHubToken(GITHUB_TOKEN)
+                .modelName("gpt-4o")
+                .logRequestsAndResponses(true)
                 .build();
     }
 
@@ -27,8 +28,9 @@ public class ModelsProvider {
     @Qualifier("routerModel")
     ChatModel routerModel() {
         return GitHubModelsChatModel.builder()
-                .gitHubToken(System.getenv("GITHUB_TOKEN"))
-                .modelName("gpt-4o-mini")
+                .gitHubToken(GITHUB_TOKEN)
+                .modelName("gpt-4o")
+                .logRequestsAndResponses(true)
                 .build();
     }
 
@@ -36,8 +38,9 @@ public class ModelsProvider {
     @Qualifier("syntheseModel")
     ChatModel syntheseModel() {
         return GitHubModelsChatModel.builder()
-                .gitHubToken(System.getenv("GITHUB_TOKEN"))
-                .modelName("gpt-4o-mini")
+                .gitHubToken(GITHUB_TOKEN)
+                .modelName("gpt-4.1")
+                .logRequestsAndResponses(true)
                 .build();
     }
 }

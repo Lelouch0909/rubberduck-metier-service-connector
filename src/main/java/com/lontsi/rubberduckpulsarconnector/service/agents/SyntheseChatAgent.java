@@ -3,8 +3,9 @@ package com.lontsi.rubberduckpulsarconnector.service.agents;
 import com.lontsi.rubberduckpulsarconnector.dto.EnrichedMessageDto;
 import dev.langchain4j.service.SystemMessage;
 import dev.langchain4j.service.spring.AiService;
+import dev.langchain4j.service.spring.AiServiceWiringMode;
 
-@AiService
+@AiService(wiringMode = AiServiceWiringMode.EXPLICIT, chatModel = "syntheseModel")
 public interface SyntheseChatAgent {
 
 

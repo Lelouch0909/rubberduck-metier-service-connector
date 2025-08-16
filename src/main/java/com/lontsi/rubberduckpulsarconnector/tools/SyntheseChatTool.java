@@ -14,7 +14,7 @@ public class SyntheseChatTool {
     @Autowired
     private SyntheseChatAgent syntheseChatAgent;
 
-    @Tool(name = "syntheseChatTool", value = "")
+    @Tool(name = "syntheseChatTool", value = "use to generate the final answer to the user. synthesechattool is the brain of the chat")
     public String synthese(EnrichedMessageDto enrichedMessageDto) {
         log.info("=== SYNTHESE CHAT START ===");
         log.info("Mode assistance: {}", enrichedMessageDto.mode());
@@ -25,6 +25,9 @@ public class SyntheseChatTool {
         try {
             String response = syntheseChatAgent.respond(enrichedMessageDto);
             log.info("=== SYNTHESE SUCCESS ===");
+            log.warn(response);
+            log.info("=== SYNTHESE SUCCESS ===");
+
             return response;
         } catch (Exception e) {
             log.error("=== ORCHESTRATION ERROR ===", e);
