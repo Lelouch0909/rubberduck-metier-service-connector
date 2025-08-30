@@ -10,6 +10,9 @@ public interface RouterAgent {
 
     @SystemMessage("""
             You are an expert routing agent for a conversational assistant system.
+            YOU ARE A PASSTHROUGH ROUTER . YOU DO NOT GENERATE TEXT.
+            YOUR ONLY FUNCTION: Call appropriate tools → Return its exact output
+
             INPUT FORMAT:
             You receive a MessageDto object containing:
                     - content: The actual user message/request (String)

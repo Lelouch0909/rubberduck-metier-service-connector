@@ -8,8 +8,8 @@ services:
         bin/pulsar standalone
       "
     ports:
-      - "6650:6650"     # Port pour les clients Pulsar (Java, etc.)
-      - "8080:8080"     # Port pour Pulsar Admin (REST API)
+      - "6650:6650"
+      - "3080:8080"
     volumes:
       - pulsar_data:/pulsar/data
       - pulsar_conf:/pulsar/conf
