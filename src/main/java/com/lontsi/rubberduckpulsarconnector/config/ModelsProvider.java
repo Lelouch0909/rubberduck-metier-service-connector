@@ -2,7 +2,6 @@ package com.lontsi.rubberduckpulsarconnector.config;
 
 import dev.langchain4j.model.chat.ChatModel;
 import dev.langchain4j.model.github.GitHubModelsChatModel;
-import dev.langchain4j.model.github.GitHubModelsChatModelName;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
