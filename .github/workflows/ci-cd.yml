@@ -178,7 +178,7 @@ jobs:
             # Wait for Spring Boot to start
             sleep 15
 
-            # Try health check with reduced retries
+            # Try health check with more retries
             MAX_RETRIES=3
             RETRY_COUNT=0
 
@@ -198,7 +198,9 @@ jobs:
             echo "ERROR: Health check failed after $MAX_RETRIES retries"
             echo "Container status:"
             podman ps -a | grep ${{ env.SERVICE_NAME }} || true
-           
+            echo "Container logs:"
+            podman logs ${{ env.SERVICE_NAME }} --tail 100 || true
+
             exit 1
 
     outputs:
