@@ -10,7 +10,7 @@ env:
   IMAGE_NAME: lelouch0909/rubberduck-metier-service-connector
   SERVICE_NAME: rubberduck-metier-service-connector
   DEPLOY_PATH: /var/www/rubberduck/rubberduck-metier-service-connector
-  SERVICE_PORT: 4000
+  SERVICE_PORT: 40006
   CONTAINER_PORT: 8001
 
 jobs:
