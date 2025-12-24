@@ -47,8 +47,7 @@ public class OrchestrationTool {
                 message.content().substring(0, 100) + "..." : message.content());
 
         try {
-            OrchestrationAgent selectedAgent = getAgentForTier(message.tier());
-            String response = selectedAgent.processChat(new OrchestrationRequestDto(message.content(), message.mode()));
+            String response = getResponse(message);
             log.info("=== ORCHESTRATION SUCCESS ===");
             log.warn(response);
             log.info("=== ORCHESTRATION SUCCESS ===");
@@ -58,6 +57,20 @@ public class OrchestrationTool {
             log.error("=== ORCHESTRATION ERROR ===", e);
             return handleOrchestrationError(message.tier(), e);
         }
+    }
+
+    private String getResponse(MessageDto message) {
+        OrchestrationAgent selectedAgent = getAgentForTier(message.tier());
+        String response;
+        OrchestrationRequestDto message1 = new OrchestrationRequestDto(message.content(), message.mode());
+        response = switch (message.mode()) {
+            case SOUTIEN_TOTAL -> selectedAgent.soutienChat(message1);
+            case CORRECTION_INTERACTIVE -> selectedAgent.correctionChat(message1);
+            case DECOUVERTE -> selectedAgent.decouverteChat(message1);
+            case TUTORIEL_GUIDE -> selectedAgent.tutoChat(message1);
+            case EXPLICATIF -> selectedAgent.explicationChat(message1);
+        };
+        return response;
     }
 
     private OrchestrationAgent getAgentForTier(AssistantTier tier) {

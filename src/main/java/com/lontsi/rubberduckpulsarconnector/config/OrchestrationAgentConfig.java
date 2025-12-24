@@ -28,7 +28,7 @@ public class OrchestrationAgentConfig {
     public OrchestrationAgent standardOrchestration() {
         return AiServices.builder(OrchestrationAgent.class)
                 .chatModel(orchestrationModel)
-                .tools(syntheseChatTool)
+             //   .tools(syntheseChatTool)
                 .build();
     }
 
@@ -37,7 +37,8 @@ public class OrchestrationAgentConfig {
     public OrchestrationAgent professionalOrchestration() {
         return AiServices.builder(OrchestrationAgent.class)
                 .chatModel(orchestrationModel)
-                .tools(webSearchTool,syntheseChatTool)
+            //    .tools(webSearchTool,syntheseChatTool)
+                .tools(webSearchTool)
                 .build();
     }
 
@@ -46,7 +47,8 @@ public class OrchestrationAgentConfig {
     public OrchestrationAgent premiumOrchestration() {
         return AiServices.builder(OrchestrationAgent.class)
                 .chatModel(orchestrationModel)
-                .tools(webSearchTool,syntheseChatTool)
+              //  .tools(webSearchTool,syntheseChatTool)
+                .tools(webSearchTool)
                 .build();
 
     }

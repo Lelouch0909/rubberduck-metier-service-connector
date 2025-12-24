@@ -38,7 +38,7 @@ public class ProcessServiceMessageImpl implements IProcessServiceMessage {
                 requestDto.mode()
         );
 
-        Flux<String> resultFlux = process(messageDto);
+        Flux<String> resultFlux = process(messageDto).concatWith(Mono.just("[END]"));
 
         return messageProducer.sendMessage(
                 requestDto.id_discussion(),
